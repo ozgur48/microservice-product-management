@@ -8,7 +8,7 @@ spring:
             user-name-attribute: preferred_username
         registration:
           keycloak:
-            client-id: bff-service
+            client-id: product-management-client
             client-secret: 1shVD3LCcwSgmvvD2DJS8LhgD9WFzCa5
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             authorization-grant-type: authorization_code

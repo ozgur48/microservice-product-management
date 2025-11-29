@@ -11,16 +11,16 @@ spring:
         jwt:
           issuer-uri: http://localhost:8585/realms/infonal
 
-    cloud:
-      gateway:
-        default-filters:
-          - TokenRelay
-          - RemoveRequestHeader=Cookie   # login redirect tetiklenmesin
-        routes:
-          # /api/** ? BFF
-          - id: bff-service
-            uri: lb://bff-service
-            predicates:
-              - Path=/api/**
-            filters:
-              - RewritePath=/api/(?<segment>.*), /${segment}
+  cloud:
+    gateway:
+      default-filters:
+        - TokenRelay
+        - RemoveRequestHeader=Cookie   # login redirect tetiklenmesin
+      routes:
+        # /api/** ? BFF
+        - id: bff-service
+          uri: lb://bff-service
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /${segment}
