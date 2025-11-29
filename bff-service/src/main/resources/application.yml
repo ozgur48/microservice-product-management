@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: bff-service
+  config:
+    import: configserver:http://localhost:8787
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8585/realms/infonal
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: bff-service
+            client-secret: 6QUCwN9kiHW6AbK0Vyg90QFbYqooILJT
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            authorization-grant-type: authorization_code
+            scope:
+              - openid
+              - profile
+              - email
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8585/infonal
+    cloud:
+      gateway:
+        default-filters:
+          - TokenRelay
+          - RemoveRequestHeader=Cookie
