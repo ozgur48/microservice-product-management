@@ -1,0 +1,36 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8585/realms/infonal
+  datasource:
+    url: jdbc:postgresql://localhost:5051/order_service
+    username: postgres
+    password: order_service_db_password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+  kafka:
+    bootstrap-servers: localhost:9094
+  cloud:
+    function:
+      definition: orderEvents
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9094
+      bindings:
+        orderCreated-out-0:
+          destination: order-topic
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update

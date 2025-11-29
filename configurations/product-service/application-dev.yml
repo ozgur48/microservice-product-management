@@ -10,7 +10,7 @@ spring:
         jwt:
           issuer-uri: http://localhost:8585/realms/infonal
   datasource:
-    url: jdbc:postgresql://localhost:5433/product_service
+    url: jdbc:postgresql://localhost:5050/product_service
     username: postgres
     password: product_service_db_password
     driver-class-name: org.postgresql.Driver
