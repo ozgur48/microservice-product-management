@@ -70,6 +70,29 @@ public class Product implements AggregateRoot{
         );
     }
 
+    public ProductId productId() {
+        return productId;
+    }
+
+    public ProductName productName() {
+        return productName;
+    }
+
+    public Description description() {
+        return description;
+    }
+
+    public Stock stock() {
+        return stock;
+    }
+
+    public Money money() {
+        return money;
+    }
+
+    public List<DomainEvent> domainEvents() {
+        return domainEvents;
+    }
 
     @Override
     public List<DomainEvent> getDomainEvents() {
