@@ -12,7 +12,8 @@ public class GatewayConfig {
     public RouteLocator routeLocator(RouteLocatorBuilder builder){
         return builder
                 .routes()
-                .route("product-service", r-> r
+                .route(
+                        "product-service", r-> r
                         .path("/api/v1/products/**")
                         .filters(f->f
                                 .retry(config-> config.setRetries(3)))

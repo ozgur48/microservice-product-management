@@ -3,11 +3,12 @@ package com.infonal.productservice.infrastructure;
 import com.infonal.productservice.domain.model.Product;
 import com.infonal.productservice.domain.model.ProductId;
 import com.infonal.productservice.domain.port.ProductRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
+@Repository
 public class ProductRepositoryAdapter implements ProductRepository {
     private final JpaProductMapper productMapper;
     private final JpaProductRepository repository;

@@ -9,7 +9,7 @@ spring:
         registration:
           keycloak:
             client-id: product-management-client
-            client-secret: 1shVD3LCcwSgmvvD2DJS8LhgD9WFzCa5
+            client-secret: 6QUCwN9kiHW6AbK0Vyg90QFbYqooILJT
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             authorization-grant-type: authorization_code
             scope:
