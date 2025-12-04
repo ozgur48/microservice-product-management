@@ -35,22 +35,15 @@ public class OutboxMessage {
     private OffsetDateTime createdAt = OffsetDateTime.now();
     private OffsetDateTime processedAt;
 
-    public OutboxMessage(UUID id, UUID eventId, String aggregateType,
-                         UUID aggregateId, String eventType, String payloadJson,
-                         OutboxStatus status, int retryCount, OffsetDateTime createdAt,
-                         OffsetDateTime processedAt) {
-        this.id = id;
+    public OutboxMessage(UUID eventId, String aggregateType,
+                         UUID aggregateId, String eventType, String payloadJson) {
         this.eventId = eventId;
         this.aggregateType = aggregateType;
         this.aggregateId = aggregateId;
         this.eventType = eventType;
         this.payloadJson = payloadJson;
-        this.status = status;
-        this.retryCount = retryCount;
-        this.createdAt = createdAt;
-        this.processedAt = processedAt;
     }
-    // jpa için reflection (db'den) ile no-args constructor
+    // jpa için reflection (db'den) ile no-args constructor. db'den çekerken yeni bir nesne yaratmaz
     protected OutboxMessage(){}
 
     public UUID id() {
