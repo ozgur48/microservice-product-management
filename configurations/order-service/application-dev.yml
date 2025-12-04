@@ -9,13 +9,7 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8585/realms/infonal
-  datasource:
-    url: jdbc:postgresql://localhost:5051/order_service
-    username: postgres
-    password: order_service_db_password
-    driver-class-name: org.postgresql.Driver
-    hikari:
-      maximum-pool-size: 10
+
   kafka:
     bootstrap-servers: localhost:9094
   cloud:
@@ -26,8 +20,16 @@ spring:
         binder:
           brokers: localhost:9094
       bindings:
-        orderCreated-out-0:
+        orderEvent-out-0:
           destination: order-topic
+
+  datasource:
+    url: jdbc:postgresql://localhost:5051/order_service
+    username: postgres
+    password: order_service_db_password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect

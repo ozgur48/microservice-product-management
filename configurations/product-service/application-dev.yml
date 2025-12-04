@@ -9,13 +9,6 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8585/realms/infonal
-  datasource:
-    url: jdbc:postgresql://localhost:5050/product_service
-    username: postgres
-    password: product_service_db_password
-    driver-class-name: org.postgresql.Driver
-    hikari:
-      maximum-pool-size: 10
   kafka:
     bootstrap-servers: localhost:9094
   cloud:
@@ -26,11 +19,20 @@ spring:
         binder:
           brokers: localhost:9094
       bindings:
-        productCreated-out-0:
+        productEvents-out-0:
           destination: product-topic
+
+  datasource:
+    url: jdbc:postgresql://localhost:5050/product_service
+    username: postgres
+    password: product_service_db_password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
       ddl-auto: update
+
