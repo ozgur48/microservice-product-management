@@ -30,7 +30,7 @@ public class OutboxEventRelayer {
     @Scheduled(fixedDelayString = "${outbox.scheduler.fixed-delay:5000}")
     @Transactional
     public void publishPendingEvents(){
-        List<OutboxMessage> pendingEvents = outboxRepository.findByStatusOrderByCreatedAsc(OutboxStatus.PENDING);
+        List<OutboxMessage> pendingEvents = outboxRepository.findByStatusOrderByCreatedAtAsc(OutboxStatus.PENDING);
         if(pendingEvents.isEmpty()){
             return;
         }

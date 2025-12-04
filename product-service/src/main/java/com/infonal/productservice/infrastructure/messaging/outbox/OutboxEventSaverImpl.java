@@ -5,12 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infonal.productservice.domain.event.DomainEvent;
 import com.infonal.productservice.domain.event.ProductCreatedEvent;
 import com.infonal.productservice.domain.model.AggregateRoot;
-import com.infonal.productservice.infrastructure.messaging.events.ProductCreatedIntegrationEvent;
 import com.infonal.productservice.infrastructure.messaging.mapper.ProductEventMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class OutboxEventSaverImpl implements OutboxEventSaver{
