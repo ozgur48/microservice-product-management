@@ -1,4 +1,4 @@
-package com.infonal.orderservice.infrastructure.outbox;
+package com.infonal.orderservice.infrastructure.messaging.outbox;
 
 import jakarta.persistence.*;
 
