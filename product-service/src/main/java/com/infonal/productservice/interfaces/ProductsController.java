@@ -23,4 +23,3 @@ public class ProductsController {
         return createProductCommandHandler.handle(command);
     }
 }
-.

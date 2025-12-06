@@ -1,10 +1,7 @@
 package com.infonal.orderservice.infrastructure;
 
 import com.infonal.orderservice.domain.model.OrderStatus;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -12,6 +9,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Entity
+@Table(name = "orders")
 public class JpaOrderEntity {
     @Id
     @Column(nullable = false, columnDefinition = "uuid")

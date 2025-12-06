@@ -5,10 +5,12 @@ import com.infonal.orderservice.domain.model.OrderId;
 import com.infonal.orderservice.domain.port.OrderRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class OrderRepositoryAdapter implements OrderRepository {
     private final JpaOrderRepository jpaOrderRepository;
     private final OrderEntityMapper entityMapper;

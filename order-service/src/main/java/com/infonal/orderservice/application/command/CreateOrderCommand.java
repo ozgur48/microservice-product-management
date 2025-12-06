@@ -18,7 +18,6 @@ public record CreateOrderCommand(
         @Positive int quantity,
         @NotNull @Size(min = 3, max = 100) String city,
         @NotNull @Size(min = 3, max = 100) String district,
-        @NotNull LocalDateTime orderDate,
         @Positive BigDecimal amount,
         @NotNull @Length(min = 3, max = 3) String currency
         ) implements Command<CreatedOrderResponse> {
