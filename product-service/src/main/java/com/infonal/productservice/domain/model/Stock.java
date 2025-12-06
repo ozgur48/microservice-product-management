@@ -12,6 +12,9 @@ public record Stock(int value) {
     public static Stock of(int stock){
         return new Stock(stock);
     }
+    public boolean canReserve(int value){
+        return this.value >= value;
+    }
     public Stock increase(int amount){
         if(amount < 0 ){
             throw new IllegalArgumentException("Increase amount can not be negative");

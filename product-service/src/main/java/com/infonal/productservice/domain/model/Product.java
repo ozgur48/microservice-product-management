@@ -3,6 +3,8 @@ package com.infonal.productservice.domain.model;
 import com.infonal.productservice.domain.event.DiscountEvent;
 import com.infonal.productservice.domain.event.DomainEvent;
 import com.infonal.productservice.domain.event.ProductCreatedEvent;
+import com.infonal.productservice.domain.exception.AmountMustBePositive;
+import com.infonal.productservice.domain.exception.ProductStockInsufficient;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -68,6 +70,14 @@ public class Product implements AggregateRoot{
                         newPrice
                 )
         );
+    }
+
+
+    public void reserveStock(int stock){
+        if(!this.stock.canReserve(stock)){
+            throw new ProductStockInsufficient(stock);
+        }
+        this.stock = this.stock.decrease(stock);
     }
 
     public ProductId productId() {

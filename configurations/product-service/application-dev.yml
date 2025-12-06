@@ -21,6 +21,11 @@ spring:
       bindings:
         productEvents-out-0:
           destination: product-topic
+        orderEvents-in-0:
+          destination: order-topic
+          contentType: application/json
+
+
 
   datasource:
     url: jdbc:postgresql://localhost:5050/product_service
