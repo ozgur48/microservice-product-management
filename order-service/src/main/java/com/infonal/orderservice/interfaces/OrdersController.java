@@ -6,14 +6,11 @@ import com.infonal.orderservice.cqrs.CommandHandler;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Validated
 @RequestMapping("/api/v1/orders")
+@Validated
 public class OrdersController {
     private final CommandHandler<CreateOrderCommand, CreatedOrderResponse> createdOrderCommandHandler;
 
@@ -22,6 +19,7 @@ public class OrdersController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
     public CreatedOrderResponse createOrder(@Valid @RequestBody CreateOrderCommand command){
         return createdOrderCommandHandler.handle(command);
     }
