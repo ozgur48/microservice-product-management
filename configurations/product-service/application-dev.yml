@@ -24,6 +24,10 @@ spring:
         orderEvents-in-0:
           destination: order-topic
           contentType: application/json
+          consumer:
+            enableDlq: true
+            auto-offset-reset: earliest
+            maxAttempts: 3
 
 
 
