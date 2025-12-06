@@ -20,6 +20,7 @@ public class ProductOrderService {
         ProductId productId = new ProductId(event.productId()); // gelen uuid'yi vo'ya cevir
         // aggregate'i yükle
         Product product = productRepository.findById(productId).orElseThrow(()-> new ProductNotFound(productId.value()));
+        // domain davranışını çağır
         product.reserveStock(event.quantity());
         productRepository.save(product);
     }
