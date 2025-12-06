@@ -19,6 +19,12 @@ public class GatewayConfig {
                                 .retry(config-> config.setRetries(3)))
                         .uri("lb://product-service"))
                 .route(
+                        "order-service", r-> r
+                                .path("/api/v1/orders/**")
+                                .filters(f->f
+                                        .retry(config-> config.setRetries(3)))
+                                .uri("lb://order-service"))
+                .route(
                         "bff-service", r-> r
                                 .path("/api/**")
                                 .filters(f-> f

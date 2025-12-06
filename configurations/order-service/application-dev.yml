@@ -20,7 +20,7 @@ spring:
         binder:
           brokers: localhost:9094
       bindings:
-        orderEvent-out-0:
+        orderEvents-out-0:
           destination: order-topic
 
   datasource:

@@ -28,7 +28,7 @@ public class JpaOrderEntity {
     @Size(min = 3, max = 100)
     private String city;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, length = 100)
     @Size(min = 3, max = 100)
     private String district;
 
