@@ -1,26 +1,36 @@
 package com.infonal.productservice.domain.model;
 
-import com.infonal.productservice.domain.exception.StockMustBePositive;
+import com.infonal.productservice.domain.exception.StockCanNotBeNegative;
 
 
 public record Stock(int value) {
     public Stock{
         if(value < 0){
-            throw new StockMustBePositive(value);
+            throw new StockCanNotBeNegative(value);
         }
     }
     public static Stock of(int stock){
         return new Stock(stock);
     }
+
     public boolean canReserve(int value){
         return this.value >= value;
     }
+
+    public Stock update(int amount){
+        if(amount < 0){
+            throw new StockCanNotBeNegative(amount);
+        }
+        return new Stock(amount);
+    }
+
     public Stock increase(int amount){
         if(amount < 0 ){
             throw new IllegalArgumentException("Increase amount can not be negative");
         }
         return new Stock(this.value + amount);
     }
+
     public Stock decrease(int amount){
         if(amount < 0 ){
             throw new IllegalArgumentException("Decrease amount can not be negative");

@@ -72,6 +72,10 @@ public class Product implements AggregateRoot{
         );
     }
 
+    public void updateStock(int newStock){
+       this.stock = this.stock.update(newStock);
+    }
+
 
     public void reserveStock(int stock){
         if(!this.stock.canReserve(stock)){
