@@ -3,6 +3,7 @@ package com.infonal.productservice.domain.model;
 import com.infonal.productservice.domain.event.DiscountEvent;
 import com.infonal.productservice.domain.event.DomainEvent;
 import com.infonal.productservice.domain.event.ProductCreatedEvent;
+import com.infonal.productservice.domain.event.ProductDescriptionUpdatedEvent;
 import com.infonal.productservice.domain.exception.AmountMustBePositive;
 import com.infonal.productservice.domain.exception.ProductStockInsufficient;
 
@@ -56,10 +57,6 @@ public class Product implements AggregateRoot{
                 money
         );
     }
-    public void changeDescription(Description newDescription){
-        this.description = newDescription;
-    }
-
     public void applyDiscount(Money discountAmount){
         Money newPrice = this.money.subtract(discountAmount);
         this.money = newPrice;
@@ -82,6 +79,18 @@ public class Product implements AggregateRoot{
             throw new ProductStockInsufficient(stock);
         }
         this.stock = this.stock.decrease(stock);
+    }
+
+    public void updateDescription(Description newDescription){
+        if(!this.description.equals(newDescription)){
+            this.description = newDescription;
+            domainEvents.add(
+                    new ProductDescriptionUpdatedEvent(
+                            this.productId,
+                            newDescription
+                    )
+            );
+        }
     }
 
     public ProductId productId() {
