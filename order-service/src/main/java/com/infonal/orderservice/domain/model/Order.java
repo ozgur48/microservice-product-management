@@ -87,6 +87,11 @@ public class Order implements AggregateRoot{
         );
         domainEvents.add(event);
     }
+    public void changeShippingAddress(Address newAddress){
+        if(!this.address.equals(newAddress)){
+            this.address = newAddress;
+        }
+    }
 
     public OrderId orderId() {
         return orderId;

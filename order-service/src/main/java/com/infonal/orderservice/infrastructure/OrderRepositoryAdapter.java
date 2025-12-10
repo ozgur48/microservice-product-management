@@ -44,4 +44,9 @@ public class OrderRepositoryAdapter implements OrderRepository {
     public void delete(OrderId orderId) {
         jpaOrderRepository.deleteById(orderId.id());
     }
+
+    @Override
+    public long countAll() {
+        return jpaOrderRepository.count();
+    }
 }

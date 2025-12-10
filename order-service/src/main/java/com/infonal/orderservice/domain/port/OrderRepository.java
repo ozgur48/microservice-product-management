@@ -11,4 +11,6 @@ public interface OrderRepository {
     Optional<Order> findById(OrderId orderId);
     List<Order> findAllPaged(Integer pageIndex, Integer pageSize);
     void delete(OrderId orderId);
+    long countAll();
+
 }
