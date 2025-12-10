@@ -8,7 +8,9 @@ import com.infonal.orderservice.domain.model.Address;
 import com.infonal.orderservice.domain.model.Order;
 import com.infonal.orderservice.domain.model.OrderId;
 import com.infonal.orderservice.domain.port.OrderRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UpdateOrderAddressCommandHandler implements CommandHandler<UpdateOrderAddressCommand, UpdatedOrderAddressResponse> {
     private final OrderRepository orderRepository;
     private final UpdateOrderAddressMapper mapper;
