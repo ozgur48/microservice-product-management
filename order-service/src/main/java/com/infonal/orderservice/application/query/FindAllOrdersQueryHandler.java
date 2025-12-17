@@ -6,7 +6,6 @@ import com.infonal.orderservice.application.mapper.OrderSummaryResponseMapper;
 import com.infonal.orderservice.cqrs.QueryHandler;
 import com.infonal.orderservice.domain.model.Order;
 import com.infonal.orderservice.domain.port.OrderRepository;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
