@@ -93,8 +93,8 @@ public class OrderServiceTest {
     @Test
     void whenHandleQuery_thenOrdersShouldBeFetchedAndMapped(){
         // --- 1 hazırlık arrange
-        // a) Repository Talimatı: findAll metodu herhangi bir Pageable objesiyle çağrıldığında, mockOrderPage'i döndür.
-        // NOT: Repository metodunuzun isminin 'findAllPaged' değil, Spring Data'da yaygın olan 'findAll' olduğunu varsayıyoruz.
+        // a) Repository Talimatı: findAll metodu herhangi bir Pageable objesiyle çağrıldığında, mockOrderContent'i döndür.
+        // NOT: Repository metodunuzun isminin 'findAllPaged'
         // Eğer 'findAllPaged' ise, aşağıdaki kodu güncelleyin.
         // ArgumentMatchers.anyInt() kullanarak, gelen değerlerin Integer tipinde herhangi bir değer olabileceğini belirtiyoruz.
         // orderRepository, @Mock ile tanımlanmış bir Mockito nesnesidir.
@@ -118,6 +118,8 @@ public class OrderServiceTest {
         assertThat(actualResponse).isEqualTo(exptectedResponse);
 
         // b) Davranış Doğrulama
+
+        // aslında burada girdileri kontrol ediyoruz handle methodu doğru parametreleri aldımı ? pageIndex ve pageSize
 
         // 1. Repository Kontrolü (Aynı kalır)
         ArgumentCaptor<Integer> pageIndexCaptor = ArgumentCaptor.forClass(Integer.class);
