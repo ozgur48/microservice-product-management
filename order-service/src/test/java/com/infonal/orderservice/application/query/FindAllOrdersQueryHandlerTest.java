@@ -1,10 +1,8 @@
-package com.infonal.orderservice.domain;
+package com.infonal.orderservice.application.query;
 
 import com.infonal.orderservice.application.dto.OrderStatusDto;
 import com.infonal.orderservice.application.dto.OrderSummaryResponse;
 import com.infonal.orderservice.application.mapper.OrderSummaryResponseMapper;
-import com.infonal.orderservice.application.query.FindAllOrdersQuery;
-import com.infonal.orderservice.application.query.FindAllOrdersQueryHandler;
 import com.infonal.orderservice.domain.model.Order;
 import com.infonal.orderservice.domain.port.OrderRepository;
 
@@ -34,7 +32,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class OrderServiceTest {
+public class FindAllOrdersQueryHandlerTest {
 
     // dependency injection
     @Mock
@@ -133,10 +131,9 @@ public class OrderServiceTest {
         // toResponse metodu, toplamda 2 kez (mockOrderContent'teki eleman sayısı kadar) çağrılmalıdır.
         verify(mapper, times(1)).toResponse(mockOrderContent.get(0));
         verify(mapper, times(1)).toResponse(mockOrderContent.get(1));
-
-
-
     }
+
+
 
 
 }
