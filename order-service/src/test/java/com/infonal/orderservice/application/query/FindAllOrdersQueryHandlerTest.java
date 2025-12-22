@@ -44,9 +44,6 @@ public class FindAllOrdersQueryHandlerTest {
     // test edilecek gerçek sınıf
     @InjectMocks
     private FindAllOrdersQueryHandler handler;
-
-
-
     private FindAllOrdersQuery query;
     private List<Order> mockOrderContent;
     private Page<Order> mockOrderPage;
@@ -85,17 +82,12 @@ public class FindAllOrdersQueryHandlerTest {
 
     }
 
-    // Mockito Talimatı: Repository'nin findAll metodu herhangi bir Pageable objesiyle çağrıldığında,
-    // mockOrderPage objesini döndür.
-
     @Test
     void whenHandleQuery_thenOrdersShouldBeFetchedAndMapped(){
         // --- 1 hazırlık arrange
         // a) Repository Talimatı: findAll metodu herhangi bir Pageable objesiyle çağrıldığında, mockOrderContent'i döndür.
-        // NOT: Repository metodunuzun isminin 'findAllPaged'
         // Eğer 'findAllPaged' ise, aşağıdaki kodu güncelleyin.
         // ArgumentMatchers.anyInt() kullanarak, gelen değerlerin Integer tipinde herhangi bir değer olabileceğini belirtiyoruz.
-        // orderRepository, @Mock ile tanımlanmış bir Mockito nesnesidir.
         doReturn(mockOrderContent)
                 .when(orderRepository)
                 .findAllPaged(anyInt(), anyInt());
